@@ -1,0 +1,92 @@
+<ion-view view-title="TSH PieInTheFace">
+  <ion-nav-buttons side="right">
+    <div ng-if="isAuthenticated" class="toggleLabel">PowerHour</div>
+    <label ng-if="isAuthenticated" class="toggle">
+   <input ng-model="powerHour.checked" type="checkbox">
+   <div class="track">
+     <div class="handle"></div>
+   </div>
+</label>
+    <button ng-if="isAuthenticated" ng-click="toggleDeleteButtons()" class="button button-icon button-clear ion-minus-circled"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-footer">
+    <div ng-if="isLoading" style="text-align: center;">
+      <ion-spinner icon="bubbles"></ion-spinner>
+    </div>
+
+    <ion-list show-delete="status">
+      <div ng-if="!isLoading" class="topThree item item-divider">
+        Top 3
+      </div>
+
+      <ion-item ng-if="$index <= 2 || person.votes == filteredPeople[0].votes || person.votes == filteredPeople[1].votes || person.votes ==filteredPeople[2].votes"
+        ng-repeat-start="(key,person) in (filteredPeople =(people |filter:{isPlaying: true}|orderBy: '-votes') )  " class="item">
+        <ion-delete-button ng-click="buyOut(person)" class="ion-minus-circled"></ion-delete-button>
+        <div>
+          <div>{{person.name | uppercase}}</div>
+          <div class="item-icon-right">
+            <i class="icon pie" ng-include="'img/pie.svg'"></i></div>
+          <div class="customBadge assertive badgeVotes">{{person.votes > 1? person.votes + ' votes': person.votes + ' vote'}}</div>
+          <span class="assertive" ng-if="key >0">
+            <i class="ion-arrow-down-b assertive"></i> 
+          {{filteredPeople[$index-1].votes - person.votes}} votes
+            <span ng-show="filteredPeople[$index-1].votes - person.votes > 1 || filteredPeople[$index-1].votes - person.votes===0 ">votes behind</span>
+          <span ng-show="filteredPeople[$index-1].votes - person.votes ===1">vote behind</span>
+          </span> <br>
+          <span ng-if="isAuthenticated" class="customBadge badgeAmount">{{person.amount | currency}}</span>
+          <ion-option-button ng-if="isAuthenticated" class=" editButton" ng-click="edit(person)">Edit</ion-option-button>
+        </div>
+
+      </ion-item>
+
+      <ion-item ng-if="$index==3" class="everyoneElse item item-divider">
+        Everyone Else
+      </ion-item>
+      <ion-item class="item-badge-left" ng-if="$index >= 3 && person.votes < filteredPeople[2].votes" ng-repeat-end class="item">
+        <ion-delete-button ng-click="buyOut(person)" class="ion-minus-circled"></ion-delete-button>
+        <div>
+          <div>{{person.name | uppercase}} </div>
+
+          <div ng-if="$last || filteredPeople[filteredPeople.length - 1].votes == person.votes" class="item-icon-right">
+            <i class="icon pie" ng-include="'img/pie.svg'"></i></div>
+          <div class="customBadge assertive badgeVotes">{{person.votes > 1? person.votes + ' votes': person.votes + ' vote'}}</div>
+          <span class="assertive">
+            <i class="ion-arrow-down-b assertive"></i> 
+            {{filteredPeople[$index-1].votes - person.votes}} 
+            <span ng-show="filteredPeople[$index-1].votes - person.votes > 1 || filteredPeople[$index-1].votes - person.votes===0 ">votes behind</span>
+          <span ng-show="filteredPeople[$index-1].votes - person.votes ===1">vote behind</span>
+          </span> <br>
+          <span ng-if="isAuthenticated" class="customBadge badgeAmount">{{person.amount | currency}}</span>
+          <ion-option-button ng-if="isAuthenticated" class="editButton" ng-click="edit(person)">Edit</ion-option-button>
+        </div>
+
+      </ion-item>
+
+      <ion-item ng-if="!isLoading" class="boughtOut item item-divider">
+        Bought Out
+      </ion-item>
+
+
+      <ion-item ng-repeat="(key,person) in (boughtPeople =(people |filter:{isPlaying: false} |orderBy: '-votes' )) " class="item">
+        <ion-delete-button ng-click="backIn(person)" class="ion-plus-circled"></ion-delete-button>
+        <ion-option-button ng-if="isAuthenticated" class="button-assertive" ng-click="people.$remove(person)">Delete</ion-option-button>
+        <div>
+          <h2>{{person.name | uppercase}}</h2>
+          <div class="customBadge assertive badgeVotes">{{person.votes}} votes</div>
+          <br>
+          <div class="customBadge badgeAmount">{{person.amount | currency}}</div>
+
+        </div>
+
+      </ion-item>
+
+
+    </ion-list>
+
+
+  </ion-content>
+  <button ng-if="isAuthenticated" ng-click="addPerson()" class="button deleteButton  button-assertive  ion-plus-round"></button>
+  <div ng-if="!isLoading" class="bar bar-footer bar-balanced">
+    <div class="title">Grand Total Raised: {{grandTotal | currency}}</div>
+  </div>
+</ion-view>

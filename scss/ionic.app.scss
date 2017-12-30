@@ -1,0 +1,142 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+*/
+
+$colors: ( light: #000000, stable: #000, positive: #D35400, calm: deepskyblue, balanced: #E87E04, energized: #27ae60, assertive: #ef473a, royal: #F39C12, dark: #444, );
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+.deleteButton {
+    position: fixed;
+    bottom: 2em;
+    right: 1.5em;
+    box-shadow: 2px 4px 8px #666;
+    border-radius: 50%;
+    z-index: 9000;
+}
+
+.submit {
+    text-align: center;
+}
+
+.submit button {
+    margin-top: 2em;
+    width: 15em;
+}
+
+.addPersonForm {
+    width: 90%;
+    margin: 0 auto;
+}
+
+div.ionic_toast * {
+    transition: 3s ease-in !important;
+}
+
+.topThree {
+    background-color: map-get($colors, assertive);
+    color: white;
+}
+
+.everyoneElse {
+    background-color: map-get($colors, calm);
+    color: white;
+}
+
+.boughtOut {
+    background-color: map-get($colors, royal);
+    color: white;
+}
+
+.has-error,
+.has-error span {
+    border-color: red;
+    color: red;
+}
+
+.help-block {
+    color: red;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+ion-item.highlightLast {
+    border: 3px solid deepskyblue !important;
+}
+
+.pie {
+    width: 75px;
+}
+
+.pie svg {
+    width: 75px;
+}
+
+.pie svg path {
+    fill: deepskyblue;
+}
+
+.menuItem {
+    cursor: pointer;
+}
+
+.editButton {
+    padding: 0 1.2em;
+    font-size: 1.2em;
+    background-color: map-get($colors, energized);
+    color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.buttonContainer {
+    height: 4em;
+    max-height: 4em;
+}
+
+.buttonContainer div {
+    text-align: center;
+}
+
+.customBadge {
+    border-radius: 10px;
+    padding: 3px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+}
+
+.badgeVotes {
+    background-color: map-get($colors, assertive);
+    color: white;
+    clear: right;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.badgeAmount {
+    background-color: map-get($colors, energized);
+    color: white;
+    display: inline-block;
+}
+
+.toggleLabel {
+    margin-top: 5px;
+    padding: 2px;
+}
+
+.spinner svg {
+    margin-top: 100px;
+    width: 100px;
+    height: 100px;
+}

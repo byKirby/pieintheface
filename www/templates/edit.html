@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive">
+    <h1 class="title">Edit</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeEdit()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="editForm" ng-submit="submitEdit()" novalidate="">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Edit name:</span>
+          <input type="text" ng-model="editData.name">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Add amount:</span>
+          $
+          <input ng-change="calculateVotes(newData.amount)" type="number" name="amount" ng-model="newData.amount">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Add votes:</span>
+          <input ng-change="calculateAmount(newData.votes)" type="number" ng-model="newData.votes">
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Submit</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

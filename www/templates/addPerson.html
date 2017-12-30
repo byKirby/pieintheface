@@ -1,0 +1,78 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive">
+    <h1 class="title">Add Person</h1>
+    <div class="buttons">
+      <button class="button button-clear ion-close-round" ng-click="closeAdd()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="theForm" ng-submit="submitPerson(theForm)" novalidate>
+      <div class="list userData">
+        <label ng-class="{'has-error' : theForm.name.$invalid && theForm.name.$touched}" class="item item-input">
+          <span class="input-label">Name</span>
+          
+          <input
+          ng-change="checkForUser(userData.name.toLowerCase())" 
+          required 
+          type="text" 
+          ng-model="userData.name"
+          ng-minlength="1"
+          ng-maxlength="20"
+          name="name" />
+           
+          
+        </label>
+        <div class="help-block" ng-if="userExists">
+       <p >This person exists already</p> 
+       </div>
+
+        <div class="help-block" ng-messages="theForm.name.$error" ng-if="theForm.name.$touched">
+          <p ng-message="minlength">Your name is too short.</p>
+          <p ng-message="maxlength">Your name is too long.</p>
+          <p ng-message="required">Your name is required.</p>
+        </div>
+
+        <label class="item item-input">
+          <span class="input-label">Amount</span>
+          $ <input
+          ng-change="calculateVotes(userData.amount)"
+          required 
+          name="amount" 
+          type="number" 
+          ng-model="userData.amount" >
+
+        </label>
+        <div class="help-block" ng-messages="theForm.amount.$error" ng-if="theForm.amount.$touched">
+          <p ng-message="required">Please enter an amount</p>
+          <p ng-message="number">Please enter numbers only</p>
+        </div>
+
+
+          <label ng-class="{'has-error' : theForm.votes.$invalid && theForm.votes.$touched}" class="item item-input">
+          <span class="input-label">Votes</span>
+          <input ng-change="calculateAmount(userData.votes)"
+          value= 0
+          min="1"
+          required 
+          name="votes" 
+          type="number" 
+          ng-model="userData.votes">
+        </label>
+          <div class="help-block" ng-messages="theForm.votes.$error" ng-if="theForm.votes.$touched">
+            <p ng-message="required">Please enter # of votes</p>
+            <p ng-message="min">Vote must be at least 1</p>
+            <p ng-message="number">Please enter numbers only</p>
+          </div>
+
+
+
+
+          <div class="submit">
+
+            <button ng-disabled="theForm.$invalid" class="button button-balanced" type="submit">Save</button>
+
+          </div>
+        </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
