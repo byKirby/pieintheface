@@ -2,6 +2,8 @@
 Side project I developed to track a recurring squadron fundraiser. People can put money towards a person to buy a certain number of votes. The fundraiser usually lasts 2 weeks and culminates at the squadron picnic event where players are PIED! 
 
 ## Overview
+Most of my work can be found in [www/js](https://github.com/byKirby/pieintheface/tree/master/www/js), [www/templates](https://github.com/byKirby/pieintheface/tree/master/www/templates), and [scss](https://github.com/byKirby/pieintheface/tree/master/scss)   
+
 ### Topics learned
 * Ionic
 * AngularJS
@@ -24,4 +26,9 @@ Side project I developed to track a recurring squadron fundraiser. People can pu
 ### Player view
 ![Player view](https://github.com/byKirby/pieintheface/blob/master/screenshots/player_view.gif)
 ### Admin views
-#### ![Add Player](https://github.com/byKirby/pieintheface/blob/master/screenshots/add_user.gif)
+#### Add player
+![Add Player](https://github.com/byKirby/pieintheface/blob/master/screenshots/add_user.gif)
+#### Edit player
+![Edit Player](https://github.com/byKirby/pieintheface/blob/master/screenshots/edit_user.gif)
+#### Buyout
+![Buyout](https://github.com/byKirby/pieintheface/blob/master/screenshots/buyout.gif)
