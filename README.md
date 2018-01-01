@@ -22,6 +22,6 @@ Side project I developed to track a recurring squadron fundraiser. People can pu
 
 ## Usage
 ### Player view
-![Player view](https://github.com/byKirby/pieintheface/blob/master/player_view.gif)
+![Player view](https://github.com/byKirby/pieintheface/blob/master/screenshots/player_view.gif)
 ### Admin views
 #### ![Add Player](https://github.com/byKirby/pieintheface/blob/master/screenshots/add_user.gif)
