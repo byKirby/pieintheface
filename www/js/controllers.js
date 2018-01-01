@@ -162,14 +162,15 @@ angular.module('starter.controllers', [])
     // Buyout costs x2 current amount of money on person
     $scope.buyOut = function (person) {
       var record = $scope.people.$getRecord(person.$id)
-      record.amount *= 2
+      record.buyout = record.amount * 2
+      record.amount += record.buyout
       record.isPlaying = false
       $scope.people.$save(record)
     }
     // In case admin performs buyout action on wrong person
     $scope.backIn = function (person) {
       var record = $scope.people.$getRecord(person.$id)
-      record.amount /= 2
+      record.amount -= record.buyout
       record.isPlaying = true
       $scope.people.$save(record)
     }
